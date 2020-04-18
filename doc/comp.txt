@@ -1,0 +1,77 @@
+*comp.txt*  Competition Solutions Compiler & Runner                       *comp*
+--------------------------------------------------------------------------------
+
+                        Comp, the simple vim plugin for
+                                fast compilation
+                                      and
+                                   execution
+                            of competition solutions
+
+--------------------------------------------------------------------------------
+CONTENTS                                                         *comp-contents*
+
+      1. Installation .................................. |comp-installation|
+      2. Getting Started ............................... |comp-getting-started|
+      3. Commands ...................................... |comp-commands|
+      4. Mappings ...................................... |comp-mappings|
+      5. Contributing .................................. |comp-contributing|
+
+--------------------------------------------------------------------------------
+INSTALLATION                                                 *comp-installation*
+
+      There are several ways to install this plugin based on the plugin manager
+      you use.
+
+      1. Pathogen : Clone repository in your bundle directory and restart vim.>
+              $ git clone git@github.com:dhruvasagar/vim-comp.git ~/.vim/bundle
+<
+      2. Vundle: Add this to your vimrc - `Plugin dhruvasagar/vim-comp`
+      3. NeoBundle : Add this to your vimrc - `NeoBundle dhruvasagar/vim-comp`
+
+--------------------------------------------------------------------------------
+GETTING STARTED                                           *comp-getting-started*
+
+
+      Write your program and hit `c<CR>` to compile and run it using vimux.
+      This works well when paired with
+      `https://github.com/dhruvasagar/dotfiles/blob/master/bin/comp`
+
+--------------------------------------------------------------------------------
+COMMANDS                                                         *comp-commands*
+
+                                                                      *:CompRun*
+:CompRun
+      Runs the program with input along with compilation.
+
+                                                                  *:CompTimeRun*
+:CompTimeRun
+      Runs the program with input along with compilation with `time` for measuring
+      how slow / fast it is.
+
+                                                                     *:Compedit*
+                                                                    *:Compsplit*
+                                                                   *:Compvsplit*
+                                                                  *:Comptabedit*
+:Compedit
+:Compsplit
+:Compvsplit
+:Comptabedit
+      Open a new file and loads templates from
+      https://github.com/dhruvasagar/dotfiles/tree/master/templates
+
+--------------------------------------------------------------------------------
+MAPPINGS                                                         *comp-mappings*
+
+                                                                         *c<CR>*
+                                                              *comp-mapping-run*
+c<CR>
+      Compile and run the program
+
+--------------------------------------------------------------------------------
+CONTRIBUTING                                                 *comp-contributing*
+
+      If you want to take a stab at it, by all means, send me a pull request on
+      Github (http://github.com/dhruvasagar/vim-comp) or get in touch with me
+      directly via e-mail at dhruva 'dot' sagar 'at' gmail.com.
+
+--------------------------------------------------------------------------------
