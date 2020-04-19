@@ -7,6 +7,6 @@ function! comp#time_run() abort
 endfunction
 
 function! comp#edit(cmd, fname) abort
-  exe a:cmd fname
+  exe a:cmd a:fname
   exec ':0r ~/dotfiles/templates/' . &filetype . '/file.' . expand('%:e')
 endfunction
