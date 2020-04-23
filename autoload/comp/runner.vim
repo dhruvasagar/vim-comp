@@ -27,14 +27,25 @@ function! s:execute(command) abort
   call VimuxRunCommand(a:command)
 endfunction
 
+let s:last_cmd = ''
 function! comp#runner#run(filetype) abort
   let buildcmd = comp#runner#{a:filetype}#buildcmd()
   let runcmd = comp#runner#{a:filetype}#runcmd()
-  call s:execute(s:buildCommand([buildcmd, runcmd]))
+  let cmd = s:buildCommand([buildcmd, runcmd])
+  let s:last_cmd = cmd
+  call s:execute(cmd)
+endfunction
+
+function! comp#runner#run_last() abort
+  if (!empty(s:last_cmd))
+    call s:execute(s:last_cmd)
+  endif
 endfunction
 
 function! comp#runner#time_run(filetype) abort
   let buildcmd = comp#runner#{a:filetype}#buildcmd()
   let timeruncmd = comp#runner#{a:filetype}#timeruncmd()
-  call s:execute(s:buildCmd([buildcmd, timeruncmd]))
+  let cmd = s:buildCommand([buildcmd, timeruncmd])
+  let s:last_cmd = cmd
+  call s:execute(cmd)
 endfunction

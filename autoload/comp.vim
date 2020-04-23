@@ -3,7 +3,11 @@ function! comp#run() abort
 endfunction
 
 function! comp#time_run() abort
-  call comp#runner#timerun(&filetype)
+  call comp#runner#time_run(&filetype)
+endfunction
+
+function! comp#run_last() abort
+  call comp#runner#run_last()
 endfunction
 
 function! comp#edit(cmd, fname) abort
