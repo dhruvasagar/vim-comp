@@ -14,3 +14,16 @@ function! comp#edit(cmd, fname) abort
   exe a:cmd a:fname
   exec ':0r ~/dotfiles/templates/' . &filetype . '/file.' . expand('%:e')
 endfunction
+
+let s:extn_map = {
+      \ 'ruby': 'rb',
+      \ 'python': 'py',
+      \ 'haskell': 'hs',
+      \}
+function! comp#create(lang, name) abort
+  let pwd = expand("%:h:p")
+  cd ..
+  silent exec '!comp create' a:lang a:name | redraw!
+  exec 'cd' a:name
+  exec 'edit' a:name.".".get(s:extn_map, a:lang, a:lang)
+endfunction

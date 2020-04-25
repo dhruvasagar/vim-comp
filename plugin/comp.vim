@@ -7,6 +7,8 @@ nnoremap <Leader>rl :CompRunLast<CR>
 command! CompTimeRun :call comp#time_run()
 nnoremap <Leader>rt :CompTimeRun<CR>
 
+command! -nargs=* CompCreate call comp#create(<f-args>)
+
 command! -nargs=1 Compedit call comp#edit('edit', <q-args>)
 command! -nargs=1 Compsplit call comp#edit('split', <q-args>)
 command! -nargs=1 Compvsplit call comp#edit('vsplit', <q-args>)
