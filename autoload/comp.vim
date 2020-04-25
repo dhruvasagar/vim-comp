@@ -10,16 +10,18 @@ function! comp#run_last() abort
   call comp#runner#run_last()
 endfunction
 
-function! comp#edit(cmd, fname) abort
-  exe a:cmd a:fname
-  exec ':0r ~/dotfiles/templates/' . &filetype . '/file.' . expand('%:e')
-endfunction
-
 let s:extn_map = {
       \ 'ruby': 'rb',
       \ 'python': 'py',
       \ 'haskell': 'hs',
       \}
+
+function! comp#edit(cmd, fname) abort
+  exe a:cmd a:fname
+  let extn = expand('%:e')
+  exec ':0r ~/dotfiles/templates/' . extn . '/file.' . extn
+endfunction
+
 function! comp#create(lang, name) abort
   let pwd = expand("%:h:p")
   cd ..
