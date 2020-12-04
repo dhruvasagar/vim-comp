@@ -8,14 +8,14 @@ function! comp#runner#c#buildcmd() abort
         \]
 endfunction
 
-function! comp#runner#c#runcmd() abort
+function! comp#runner#c#runcmd(input) abort
   let fname = comp#file#basename()
   return [
         \ './bin/'.fname,
-        \ '< input',
+        \ '< ' . a:input,
         \]
 endfunction
 
-function! comp#runner#c#timeruncmd() abort
-  return ['time'] + comp#runner#c#runcmd()
+function! comp#runner#c#timeruncmd(input) abort
+  return ['time'] + comp#runner#c#runcmd(a:input)
 endfunction

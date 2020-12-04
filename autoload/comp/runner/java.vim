@@ -7,15 +7,15 @@ function! comp#runner#java#buildcmd() abort
         \]
 endfunction
 
-function! comp#runner#java#runcmd() abort
+function! comp#runner#java#runcmd(input) abort
   let fname = comp#file#basename()
   return [
         \ 'java',
         \ 'bin/'.fname,
-        \ '< input',
+        \ '< ' . a:input,
         \]
 endfunction
 
-function! comp#runner#java#timeruncmd() abort
-  return ['time'] + comp#runner#java#runcmd()
+function! comp#runner#java#timeruncmd(input) abort
+  return ['time'] + comp#runner#java#runcmd(a:input)
 endfunction

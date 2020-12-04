@@ -2,6 +2,10 @@ function! comp#run() abort
   call comp#runner#run(&filetype)
 endfunction
 
+function! comp#run_test() abort
+  call comp#runner#run(&filetype, 1)
+endfunction
+
 function! comp#time_run() abort
   call comp#runner#time_run(&filetype)
 endfunction

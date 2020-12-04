@@ -9,14 +9,14 @@ function! comp#runner#cpp#buildcmd() abort
         \]
 endfunction
 
-function! comp#runner#cpp#runcmd() abort
+function! comp#runner#cpp#runcmd(input) abort
   let fname = comp#file#basename()
   return [
         \ './bin/'.fname,
-        \ '< input',
+        \ '< ' . a:input,
         \]
 endfunction
 
-function! comp#runner#cpp#timeruncmd() abort
-  return ['time'] + comp#runner#cpp#runcmd()
+function! comp#runner#cpp#timeruncmd(input) abort
+  return ['time'] + comp#runner#cpp#runcmd(a:input)
 endfunction
