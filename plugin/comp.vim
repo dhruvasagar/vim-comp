@@ -8,7 +8,7 @@ command! CompTimeRun :call comp#time_run()
 nnoremap <Leader>rt :CompTimeRun<CR>
 
 command! CompRunTest :call comp#run_test()
-nnoremap <Leader>rc :CompRunTest<CR>
+nnoremap d<CR> :CompRunTest<CR>
 
 command! -nargs=* -complete=filetype CompCreate call comp#create(<f-args>)
 
