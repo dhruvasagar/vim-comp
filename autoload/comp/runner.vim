@@ -35,6 +35,7 @@ function! comp#runner#run(filetype, ...) abort
   let input = a:0 ? g:comp#runner#test_input : g:comp#runner#input
   let buildcmd = comp#runner#{a:filetype}#buildcmd()
   let runcmd = comp#runner#{a:filetype}#runcmd(input)
+  if !isdirectory('bin') | call mkdir('bin') | endif
   let cmd = s:buildCommand([buildcmd, runcmd])
   let s:last_cmd = cmd
   call s:execute(cmd)
