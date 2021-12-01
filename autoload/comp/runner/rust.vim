@@ -8,9 +8,9 @@ function! comp#runner#rust#buildcmd() abort
 endfunction
 
 function! comp#runner#rust#runcmd(input) abort
-  let fname = comp#file#basename()
+  let fname = comp#file#dirname()
   return [
-        \ 'cargo run',
+        \ './target/debug/'.fname,
         \ '< ' . a:input,
         \]
 endfunction

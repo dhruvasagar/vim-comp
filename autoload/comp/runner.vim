@@ -1,12 +1,18 @@
 let g:comp#runner#input = 'input'
 let g:comp#runner#test_input = 'tinput'
+if !exists('g:comp#runner#cd_to_base')
+  let g:comp#runner#cd_to_base = 1
+endif
 
 function! s:buildPrefix() abort
-  return [
-        \ 'clear;',
-        \ 'cd',
-        \ comp#file#full_path(),
-        \]
+  let prefix = ['clear']
+  if g:comp#runner#cd_to_base
+    call extend(prefix, [
+          \ '; cd',
+          \ comp#file#full_path(),
+          \])
+  endif
+  return prefix
 endfunction
 
 function! s:joinCommands(commands) abort
@@ -19,7 +25,6 @@ function! s:joinCommands(commands) abort
     endif
   endfor
   return join(commands, ' ')
-endfor
 endfunction
 
 function! s:buildCommand(cmdWithArgs) abort
