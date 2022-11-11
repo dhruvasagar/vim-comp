@@ -1,12 +1,14 @@
 let g:comp#runner#input = 'input'
 let g:comp#runner#test_input = 'tinput'
-if !exists('g:comp#runner#cd_to_base')
-  let g:comp#runner#cd_to_base = 1
-endif
 
-function! s:buildPrefix() abort
+function! s:buildPrefix(filetype) abort
   let prefix = ['clear']
-  if g:comp#runner#cd_to_base
+  if get(g:, 'comp#runner#'.a:filetype.'#cd_to_base', 0)
+    call extend(prefix, [
+          \ '; cd',
+          \ comp#file#basedir(),
+          \])
+  else
     call extend(prefix, [
           \ '; cd',
           \ comp#file#full_path(),
@@ -27,8 +29,8 @@ function! s:joinCommands(commands) abort
   return join(commands, ' ')
 endfunction
 
-function! s:buildCommand(cmdWithArgs) abort
-  return s:joinCommands([s:buildPrefix()] + a:cmdWithArgs)
+function! s:buildCommand(filetype, cmdWithArgs) abort
+  return s:joinCommands([s:buildPrefix(a:filetype)] + a:cmdWithArgs)
 endfunction
 
 function! s:execute(command) abort
@@ -41,7 +43,7 @@ function! comp#runner#run(filetype, ...) abort
   let buildcmd = comp#runner#{a:filetype}#buildcmd()
   let runcmd = comp#runner#{a:filetype}#runcmd(input)
   if !isdirectory('bin') | call mkdir('bin') | endif
-  let cmd = s:buildCommand([buildcmd, runcmd])
+  let cmd = s:buildCommand(a:filetype, [buildcmd, runcmd])
   let s:last_cmd = cmd
   call s:execute(cmd)
 endfunction

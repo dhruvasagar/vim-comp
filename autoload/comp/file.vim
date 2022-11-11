@@ -13,3 +13,7 @@ endfunction
 function! comp#file#dirname()
   return expand('%:p:h:h:t')
 endfunction
+
+function! comp#file#basedir()
+  return expand('%:p:h:h')
+endfunction

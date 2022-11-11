@@ -1,6 +1,6 @@
+let g:comp#runner#rust#cd_to_base = 1
+
 function! comp#runner#rust#buildcmd() abort
-  let ffname = comp#file#full_name()
-  let fname = comp#file#basename()
   return [
         \ "cargo",
         \ "build",
