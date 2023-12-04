@@ -58,7 +58,7 @@ function! comp#runner#time_run(filetype, ...) abort
   let input = a:0 ? g:comp#runner#test_input : g:comp#runner#input
   let buildcmd = comp#runner#{a:filetype}#buildcmd()
   let timeruncmd = comp#runner#{a:filetype}#timeruncmd(input)
-  let cmd = s:buildCommand([buildcmd, timeruncmd])
+  let cmd = s:buildCommand(a:filetype, [buildcmd, timeruncmd])
   let s:last_cmd = cmd
   call s:execute(cmd)
 endfunction
